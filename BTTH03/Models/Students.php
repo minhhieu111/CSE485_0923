@@ -1,7 +1,7 @@
 <?php
     
 
-    class SinhVien{
+    class Students{
         private $id;
         private $tenSinhVien;
         private $email;

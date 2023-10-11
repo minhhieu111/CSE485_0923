@@ -27,27 +27,39 @@
         <div class="text-center mt-3">
             <h1 class="text-info">TOP BÀI HÁT YÊU THÍCH</h1>
         </div>
+
+        <!-- kết nối sql -->
+        <?php
+            $conn = new PDO("mysql:host = localhost; dbname = BTTH01_CSE485", "root", "ace1211");
+
+            $sql = "select * from tagia join baiviet on tagia.ma_tgia = baiviet.ma_tgia;";
+            $query = $conn->prepare($sql);
+            $query->execute();
+
+            $row = $query->fetch();
+        ?>
+
         <div>
-            <ul class="nav wrap justify-content-between">
+            <ul class="nav justify-content-between">
                 <li class="nav-item border rounded m-3">
                     <img src="image/lavagio.png" alt="">
-                    <a href="detail.php" class="text-center text-info pt-4 bp-4">Cây, lá và gió</a href="">  
+                    <p class="text-center"><a href="detail.php?mabv=1" class=" text-info pt-4 bp-4">Cây, lá và gió</a>  </p>
                 </li>
                 <li class="nav-item border rounded m-3 ">
                     <img src="image/menthuong.png" alt="">
-                    <a href="" class="text-center text-info pt-4 bp-4">Cuộc sống mến thương</a href="">
+                    <p class="text-center"><a href="detail.php?mabv=2" class=" text-info pt-4 bp-4">Cuộc sống mến thương</a></p>
                 </li>
                 <li class="nav-item border rounded m-3">
                     <img src="image/longme.png" alt="">
-                    <a href="" class="text-center text-info pt-4 bp-4">Lòng mẹ</a href="">
+                    <p class="text-center"><a href="detail.php?mabv=3" class=" text-info pt-4 bp-4">Lòng mẹ</a></p>
                 </li>
                 <li class="nav-item border rounded m-3">
                     <img src="image/phoipha.png" alt="">
-                    <a href="" class="text-center text-info pt-4 bp-4">Phôi pha</a href="">
+                    <p class="text-center"><a href="detail.php?mabv=4" class=" text-info pt-4 bp-4">Phôi pha</a></p>
                 </li>
                 <li class="nav-item border rounded m-3">
                     <img src="image/tinhyeu.png" alt="">
-                    <a href="" class="text-center text-info pt-4 bp-4">Nơi tình yêu bắt đầu</a href="">
+                    <p class="text-center"><a href="detail.php?mabv=5" class=" text-info pt-4 bp-4">Nơi tình yêu bắt đầu</a></p>
                 </li>
             </ul>
         </div>

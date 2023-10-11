@@ -1,5 +1,5 @@
 <?php
-    class Lop{
+    class Classes{
         private $id;
         private $tenLop;
 

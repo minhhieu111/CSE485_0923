@@ -15,8 +15,13 @@
         </div>
         
         <div class="row justify-content-between">
-            <p class="col-md-3">Danh sách</p>
-            <a href="" style="border: 1px solid;" class="btn text-info col-md-2">Thêm</a>
+            <div class="col-md-3">
+                <a href="/index.php" class="me-3 text-decoration-none text-dark">Danh sách Sinh Viên</a>
+                <a href="/index.php?page=Classes" class="text-decoration-none text-dark">Danh sách Lớp</a>
+                
+            </div>
+            
+            <a href="/Views/AddStudents.php" style="border: 1px solid;" class="btn text-info col-md-2">Thêm</a>
         </div>
         <table class="table">
             <thead>
@@ -32,7 +37,7 @@
             </thead>
             <tbody>
                 <?php 
-                    foreach($listsv as $list){
+                    foreach($ListStu as $list){
                         ?>
                     <tr>
                         <th><?=$list->getId();?></th>
@@ -40,28 +45,16 @@
                         <td><?=$list->getEmail();?></td>
                         <td><?=$list->getNgaySinh();?></td>
                         <td><?=$list->getIdLop();?></td>
-                        <td><a href=""><i class="bi bi-pencil-fill"></i></a></td>
-                        <td><a class="text-danger" href='?ID= {<?=$list->getId();?>}'><i class="bi bi-trash3-fill"></i></a></td>
+                        <td><a href="/index.php?page=Students&fun=idStudents&Id=<?=$list->getId()?>"><i class="bi bi-pencil-fill"></i></a></td>
+                        <td><a class="text-danger" href="/index.php?page=Students&fun=delete&Id=<?=$list->getId()?>"><i class="bi bi-trash3-fill"></i></a></td>
                     </tr>
                         <?php
                     }
-
                 ?>
-                <?php
-                if(isset($_GET['ID'])){
-                    $ID = $_GET['ID'];
-                    $delete = "DELETE FROM SinhVien Where id = '$ID';";
-                    if(mysqli_query($conn, $delete)){
-                    echo "Xóa thành công";
-                    } else{
-                        echo "lỗi" .mysqli_error($conn);
-                    }
-                }
-                ?>
+                
             </tbody>
     </table>
 
     </div>
-
 </body>
 </html>
